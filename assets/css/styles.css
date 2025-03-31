@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #1f1f1f;
+    background-color: #121212;
     color: white;
     line-height: 1.6;
     transition: background-color 0.5s ease;
@@ -25,7 +25,39 @@ header h1 {
     color: white;
 }
 
-/* Форма */
+nav {
+    background-color: #222;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+    color: #3b6eeb;
+}
+
+/* Секция */
+section {
+    padding: 20px;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+}
+
 form {
     margin: 20px auto;
     padding: 20px;
