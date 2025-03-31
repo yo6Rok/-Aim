@@ -1,0 +1,56 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1c1c;
+    color: white;
+}
+
+header {
+    background-color: #0d6efd;
+    padding: 20px;
+    text-align: center;
+}
+
+header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+#hero {
+    background-color: #333;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 3rem;
+}
+
+#about, #applications, #news {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #444;
+}
+
+button {
+    background-color: #28a745;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+}
