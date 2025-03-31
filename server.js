@@ -1,45 +1,57 @@
-
 const express = require('express');
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
 const session = require('express-session');
+const bodyParser = require('body-parser');
+const passport = require('passport');
 
 const app = express();
 
-// MongoDB подключение
-mongoose.connect('mongodb://localhost/cs2-clan', { useNewUrlParser: true, useUnifiedTopology: true })
+// Подключение к базе данных MongoDB
+mongoose.connect('mongodb://localhost/cs2_clan', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB подключен"))
     .catch(err => console.log(err));
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: false
 }));
-app.use(passport.initialize());
-app.use(passport.session());
 
-const User = mongoose.model('User', new mongoose.Schema({
-    username: String,
-    email: String,
-    password: String,
-    role: { type: String, default: 'user' }
-}));
+// Модели для заявок и пользователей
+const Application = require('./models/application');
+const User = require('./models/user');
 
+// Страница главная (отправка заявок)
+app.post('/applications', async (req, res) => {
+    const { username, email, message } = req.body;
+    const newApplication = new Application({ username, email, message });
+    await newApplication.save();
+    res.redirect('/');
+});
+
+// Регистрация пользователя
 app.post('/register', async (req, res) => {
-    const { username, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ username, email, password: hashedPassword });
-    await user.save();
+    const { username, password, email } = req.body;
+    const newUser = new User({ username, password, email });
+    await newUser.save();
     res.redirect('/login');
 });
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login' }));
+// Логин пользователя
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+}));
 
+// Просмотр всех заявок для администраторов
+app.get('/admin/applications', async (req, res) => {
+    const applications = await Application.find();
+    res.render('admin', { applications });
+});
+
+// Стартуем сервер
 app.listen(3000, () => {
     console.log("Сервер работает на http://localhost:3000");
 });
-    
