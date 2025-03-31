@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS2 Клан</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Добро пожаловать в CS2 Клан!</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#applications">Заявки</a></li>
+        <li><a href="#support">Поддержка</a></li>
+        <li><a href="/login">Вход</a></li>
+    </ul>
+</nav>
+
+<section id="about">
+    <h2>О нас</h2>
+    <p>Мы - лучший клан в CS2. Присоединяйтесь и станьте частью нашей команды!</p>
+</section>
+
+<section id="applications">
+    <h2>Подать заявку</h2>
+    <form action="/applications" method="POST">
+        <input type="text" name="username" placeholder="Ваш ник" required>
+        <input type="email" name="email" placeholder="Ваш email" required>
+        <textarea name="message" placeholder="Почему хотите вступить в клан?" required></textarea>
+        <button type="submit">Отправить заявку</button>
+    </form>
+</section>
+
+<section id="support">
+    <h2>Поддержка</h2>
+    <form action="/support" method="POST">
+        <input type="email" name="email" placeholder="Ваш email" required>
+        <textarea name="message" placeholder="Описание проблемы" required></textarea>
+        <button type="submit">Отправить запрос</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2025 CS2 Клан. Все права защищены.</p>
+</footer>
+
+<script src="assets/js/scripts.js"></script>
+
+</body>
+</html>
