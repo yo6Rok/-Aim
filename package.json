@@ -1,0 +1,19 @@
+{
+  "name": "cs2-clan-site",
+  "version": "1.0.0",
+  "description": "Сайт клана ÿ⁶øŘøķ/Aim",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "latest",
+    "framer-motion": "^10.0.0",
+    "@shadcn/ui": "^1.0.0"
+  },
+  "homepage": "https://ТВОЙ-GITHUB-USERNAME.github.io/cs2-clan-site"
+}
